@@ -34,52 +34,50 @@ public class Aplikace extends JFrame {
         //Husy:
         JLabel husyLabel = new JLabel("Husy");
         add(husyLabel);
-
         JTextField husyField = new JTextField();
+        husyField.setHorizontalAlignment(JTextField.TRAILING);
         add(husyField);
 
         //Králici:
         JLabel kraliciLabel = new JLabel("Králíci");
         add(kraliciLabel);
-
         JTextField kraliciField = new JTextField();
+        kraliciField.setHorizontalAlignment(JTextField.TRAILING);
         add(kraliciField);
 
-        JLabel mezeraPredVypocitat = new JLabel(" ");
-        add(mezeraPredVypocitat);
 
         //Vypočítat:
-
+        JLabel mezeraPredVypocitat = new JLabel(" ");
+        add(mezeraPredVypocitat);
         JButton vypocitatButton = new JButton("Vypočítat");
         add(vypocitatButton);
-
 
         //Výsledek hlavy:
         JLabel hlavyLabel = new JLabel("Počet hlav");
         add(hlavyLabel);
-
         JTextField hlavyField = new JTextField();
+        hlavyField.setHorizontalAlignment(JTextField.TRAILING);
         add(hlavyField);
         hlavyField.setEditable(false);
-
 
         //Výsledek nohy:
         JLabel nohyLabel = new JLabel("Počet nohou");
         add(nohyLabel);
-
         JTextField nohyField = new JTextField();
+        nohyField.setHorizontalAlignment(JTextField.TRAILING);
         add(nohyField);
         nohyField.setEditable(false);
 
-        vypocitatButton.addActionListener(e ->
+        //Nastavení výpočtu:
+        vypocitatButton.addActionListener(e -> {
+                    int pocetHlav = Integer.parseInt(husyField.getText()) + Integer.parseInt(kraliciField.getText());
 
-        int pocetHlav = Integer.parseInt(husyField.getText()) + Integer.parseInt(kraliciField.getText());
+                    hlavyField.setText(Integer.toString(pocetHlav));
 
-        hlavyField.setText(Integer.toString(pocetHlav));
+                    int pocetNohou = Integer.parseInt(husyField.getText()) * 2 + Integer.parseInt(kraliciField.getText()) * 4;
 
-        int pocetNohou = Integer.parseInt(husyField.getText()) * 2 + Integer.parseInt(kraliciField.getText()) * 4;
-
-        nohyField.setText((Integer.toString(pocetNohou)));
+                    nohyField.setText((Integer.toString(pocetNohou)));
+                }
         );
         pack();
 
